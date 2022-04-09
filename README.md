@@ -12,7 +12,7 @@ This plugin reads data from `/import` and feeds it to the processing pipeline. I
 
 ```yaml
   plugin-source-folder:
-    image: ghcr.io/photo-channel/plugin-source-folder:sha-1234
+    image: ghcr.io/photo-channel/plugin-source-folder:sha-bf7cb15
     volumes:
       - /mnt/pictures/:/import/
     networks:
