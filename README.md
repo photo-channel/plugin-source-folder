@@ -2,12 +2,20 @@
 
 ## Description
 
-This plugin reads data from a specified folder and feeds it to the processing pipeline. If you like to import several folders, call this plugin several times.
+This plugin reads data from `/import` and feeds it to the processing pipeline. If you like to import several folders, volume mount them under for example `/import/a` and `/import/b`.
 
 ## Usage
 
-```
-SOURCE_PLUGINS=(
-    ghcr.io/photo-channel/plugin-source-folder:master#/my/images/path
-)
+```yaml
+  plugin-source-folder:
+    image: ghcr.io/photo-channel/plugin-source-folder:sha-1234
+    volumes:
+      - /mnt/pictures/:/import/
+    networks:
+      - photo-channel
+    environment:
+      MQTT_SERVER: mosquitto
+      MQTT_TOPIC: photo-channel
+    depends_on:
+      - photo-channel
 ```
